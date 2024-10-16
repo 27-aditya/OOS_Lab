@@ -20,15 +20,15 @@ public class Q5 {
     }
 }
 
-abstract class BasePayment {
-    abstract public void processPayment();
+interface BasePayment {
+     public void processPayment();
 
-    abstract public String getPaymentMethod();
+     public String getPaymentMethod();
 
-    abstract public double calculateTransactionFee();
+     public double calculateTransactionFee(double amount);
 }
 
-class CardPayment extends BasePayment {
+class CardPayment implements BasePayment {
     public void processPayment() {
         System.out.println("Processing card payment...");
     }
@@ -42,7 +42,7 @@ class CardPayment extends BasePayment {
     }
 }
 
-class SecureCardPayment extends BasePayment {
+class SecureCardPayment implements BasePayment {
     public void processPayment() {
         System.out.println("Adding extra security layers to card payment..");
     }

@@ -1,78 +1,86 @@
 interface PoweredDevice {
-    void powerOn();
-    void powerOff();
+    void powerOn();  
+    void powerOff();  
 }
 
 interface NetworkEnabled {
-    void connectToNetwork(String networkName);
-    void disconnectFromNetwork();
+    void connectToNetwork(String networkName); 
+    void disconnectFromNetwork();              
 }
 
 class SmartPhone implements PoweredDevice, NetworkEnabled {
-    private String model;
-    private boolean isPoweredOn;
-    private String connectedNetwork;
+    private String model;         
+    private boolean isPoweredOn;  
+    private String connectedNetwork; 
 
     public SmartPhone(String model) {
-        this.model = model;
-        this.isPoweredOn = false;
-        this.connectedNetwork = null;
+        this.model = model;         
+        this.isPoweredOn = false;   
+        this.connectedNetwork = null; 
     }
 
+    @Override
     public void powerOn() {
-        if (!isPoweredOn) {
-            isPoweredOn = true;
-            System.out.println(model + " is now powered on.");
+        if (!isPoweredOn) {  
+            isPoweredOn = true; 
+            System.out.println(model + " is powered on."); 
         } else {
-            System.out.println(model + " is already powered on.");
+            System.out.println(model + " is already powered on."); 
         }
     }
 
+    @Override
     public void powerOff() {
-        if (isPoweredOn) {
-            isPoweredOn = false;
-            connectedNetwork = null;
-            System.out.println(model + " is now powered off.");
+        if (isPoweredOn) {  
+            isPoweredOn = false; 
+            connectedNetwork = null; 
+            System.out.println(model + " is powered off."); 
         } else {
-            System.out.println(model + " is already powered off.");
+            System.out.println(model + " is already powered off."); 
         }
     }
 
+    @Override
     public void connectToNetwork(String networkName) {
-        if (isPoweredOn) {
-            connectedNetwork = networkName;
-            System.out.println(model + " connected to " + networkName);
+        if (isPoweredOn) { 
+            connectedNetwork = networkName; 
+            System.out.println(model + " is connected to " + networkName + "."); 
         } else {
-            System.out.println("Can't connect to " + networkName + " because " + model + " is OFF.");
+            System.out.println(model + " cannot connect to a network because it is powered off."); 
         }
     }
 
+    @Override
     public void disconnectFromNetwork() {
-        if (connectedNetwork != null) {
-            System.out.println(model + " disconnected from " + connectedNetwork);
-            connectedNetwork = null;
+        if (isPoweredOn && connectedNetwork != null) { 
+            System.out.println(model + " is disconnected from " + connectedNetwork + "."); 
+            connectedNetwork = null; 
+        } else if (connectedNetwork == null) {  
+            System.out.println(model + " is not connected to any network."); 
         } else {
-            System.out.println(model + " is not connected to any network.");
+            System.out.println(model + " cannot disconnect because it is powered off."); 
         }
     }
 
     @Override
     public String toString() {
-        String powerStatus = isPoweredOn ? "ON" : "OFF";
-        String networkInfo = (connectedNetwork != null) ? "Connected to " + connectedNetwork : "Not connected to any network";
-        return "Model: " + model + ", Power: " + powerStatus + ", " + networkInfo;
+        String powerState = isPoweredOn ? "Powered On" : "Powered Off"; 
+        String networkState = (connectedNetwork != null) ? connectedNetwork : "Not Connected"; 
+        return "Model: " + model + ", Power State: " + powerState + ", Connected Network: " + networkState; 
     }
 }
 
 public class Q1 {
     public static void main(String[] args) {
-        SmartPhone myPhone = new SmartPhone("Samsoong S234");
+        SmartPhone myPhone = new SmartPhone("Galaxy S21");
 
-        myPhone.powerOn();
-        myPhone.connectToNetwork("SSL_GENIE");
-        System.out.println(myPhone);
+        System.out.println(myPhone); 
+        myPhone.powerOn(); 
+        myPhone.connectToNetwork("Home WiFi"); 
+        System.out.println(myPhone); 
         myPhone.disconnectFromNetwork();
-        myPhone.powerOff();
+        System.out.println(myPhone); 
+        myPhone.powerOff(); 
         System.out.println(myPhone);
     }
 }

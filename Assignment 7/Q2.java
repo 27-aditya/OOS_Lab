@@ -1,7 +1,7 @@
 class PlatformUser {
-    protected String name;
-    protected String email;
-    protected String userId;
+    String name;
+    String email;
+    String userId;
 
     public PlatformUser(String name, String email, String userId) {
         this.name = name;
@@ -10,7 +10,7 @@ class PlatformUser {
     }
 
     public void accessPortal() {
-        System.out.println("Accessing the platform portal.");
+        System.out.println("Portal Access:");
     }
 }
 
@@ -21,27 +21,23 @@ class Student extends PlatformUser {
     }
 
     public void attendLiveSession() {
-        System.out.println("Attending live session.");
+        System.out.println("- Attending live session.");
     }
 
     public void viewRecordedLectures() {
-        System.out.println("Viewing recorded lectures.");
+        System.out.println("- Viewing recorded lectures.");
     }
 
     public void submitAssignment() {
-        System.out.println("Submitting assignments online.");
+        System.out.println("- Submitting assignments online.");
     }
 
     @Override
     public void accessPortal() {
-        System.out.println("-- Student Access --");
-        System.out.println("Name: " + name);
-        System.out.println("Email: " + email);
-        System.out.println("UserID: " + userId);
-        System.out.println("Portal Access:");
-        System.out.println("- Viewing online courses.");
-        System.out.println("- Attending live session.");
-        System.out.println("- Submitting assignments online.");
+        super.accessPortal();
+        attendLiveSession();
+        viewRecordedLectures();
+        submitAssignment();
     }
 }
 
@@ -70,29 +66,26 @@ class Faculty extends PlatformUser {
     @Override
     public void accessPortal() {
         System.out.println("-- Faculty Access --");
-        System.out.println("Name: " + name);
-        System.out.println("Email: " + email);
-        System.out.println("UserID: " + userId);
-        System.out.println("Portal Access:");
-        System.out.println("- Uploading course material.");
-        System.out.println("- Conducting live online lecture.");
+        System.out.println("Name: " + this.name);
+        System.out.println("Email: " + this.email);
+        System.out.println("UserID: " + this.userId);
+        super.accessPortal();
+        uploadCourseMaterial();
+        conductLiveSession();
+        uploadAssignment();
     }
 }
 
 public class Q2 {
     public static void main(String[] args) {
         Student student = new Student("John Doe", "john@student.com", "STU001");
+        Faculty faculty = new Faculty("Dr. Smith", "smith@university.com", "FAC001");
+
+        System.out.println("For student case:");
         student.accessPortal();
-        student.attendLiveSession();
-        student.viewRecordedLectures();
-        student.submitAssignment();
 
         System.out.println();
 
-        Faculty faculty = new Faculty("Dr. Smith", "smith@university.com", "FAC001");
         faculty.accessPortal();
-        faculty.conductLiveSession();
-        faculty.uploadCourseMaterial();
-        faculty.uploadAssignment();
     }
 }
