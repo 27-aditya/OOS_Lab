@@ -1,0 +1,29 @@
+Iterate through an array of words and print them using a lambda expression. (using forEach)
+
+Rewrite the above program using method reference
+
+Transform the words in an array making all the characters of the words in upper case. (The transformed words can be stored in a new array)
+
+Rewrite the above program using stream and map.
+
+Write a program to count the number of characters of the words in the array using stream and map.
+
+Write a program to get the words in the array starting with ‘A’ using filter along with stream.
+
+Modify the above program with collect() to get the words starting with ‘A’ to an assigned variable array.
+
+Make use of Predicate in the above program to define the filtering function.  
+
+Get the sum of all the characters in the given list of words using stream and mpToInt.
+
+Define a Student class with name and age. You have an array of 10 student instances. Get the average age of the students using the same code pattern in the previous code.
+
+Sort the students in ascending order of their ages using sorted() and Comparator.
+
+Get the names of the students grouped by age using groupingBy
+
+Given an array of integers, find the product of all the numbers making use of reduce().
+
+From the list of students (in Qn 10), find the oldest student using reduce().
+
+In a  software for a fruits store, a class is designed to have the information of the customer name, the fruit he bought. There is another class having the information about the fruits with price. Assume that a customer can buy only 1kg of each fruit. Write a code using java functional programming to compute the amount the store got through the sale of  each fruit.
