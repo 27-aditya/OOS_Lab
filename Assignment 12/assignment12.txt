@@ -1,0 +1,12 @@
+Singleton pattern: https://www.tutorialspoint.com/design_pattern/singleton_pattern.htm
+
+
+You are given the task of implementing a logging system for Java applications. Implement a Logger class incorporating singleton pattern for instance creation. Implement logging of warning, error and fatal based on the flag set by the application developer. The flag can be set values to indicate different levels of logging. Refer this doc: https://sematext.com/blog/logging-levels/ to understand levels of logging.
+
+
+You are creating a class that manages user sessions and authentication. SessionManager should have functions to login, which compares with the list of tuples (tuple of username and password). This list should be an attribute of the SessionManager class with usernames and passwords hardcoded. Incorporate singleton pattern to ensure that there are no multiple instances of SessionManager in the server where it will be deployed.
+
+
+Factory method pattern: https://www.geeksforgeeks.org/factory-method-design-pattern-in-java/
+
+You are implementing drawing application that supports various shapes, including circles, rectangles, and triangles. Implement a Factory Method design pattern to create instances of these shapes. Define an interface Shape with a method draw that outputs the name of the shape. Create concrete classes for Circle, Rectangle, and Triangle, each implementing the Shape interface with their unique draw methods. Finally, create a ShapeFactory class with factory methods to create each type of shape.  In the main function, accept user input for the shape name and instantiate based on user input.
